@@ -1,0 +1,259 @@
+// -----------------------------------------
+// COMMONS
+// -----------------------------------------
+
+.group{
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+.img-fluid {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+body {
+    background: url(#{$img-path}bg-1.png);
+}
+
+// -----------------------------------------
+// APP
+// -----------------------------------------
+
+.block-zone {
+    > .inner {
+        padding: 0 2em;
+        @extend .group;
+        @media (min-width: $screen-lg){
+            width: $global-width;
+            margin: 0 auto;
+            padding: 0;
+        }
+    }
+} 
+
+//---------------------
+// HEADER -------------
+// --------------------
+
+.block-header {
+    border-bottom: 3px solid $color-4;
+    
+    > .inner {
+        padding-bottom: 2em;
+    }
+    
+    .logo {
+        float: left;
+        width: 35%;
+        padding: .5em 0 0;
+        
+        img {
+            @extend .img-fluid;
+            margin: 0;
+        }
+    }
+    
+    .menu {
+        float: left;
+        width: 65%;
+        text-align: right;
+        
+        li {
+            display: inline;
+            
+            a {
+                display: inline-block;
+                text-transform: uppercase;
+                color: $color-8;
+                background: $color-7;
+                padding: 10px 20px;
+            }
+        }
+    }
+} // BLOCK HEADER
+
+//---------
+// ARGUMENTS
+//---------
+
+.block-arguments {
+    $col-spacing: 1.5em;
+    $nb-col: 3;
+    $bg: darken($color-1, 20%);
+    background: $bg;
+    border-bottom: 3px solid $color-2;
+    padding: 1.8rem;
+    
+    .wrapper {
+        @extend .group;
+        text-align: justify;
+    }
+    
+    @media (min-width: $screen-sm) {
+        .wrapper {
+            margin: 0 (-$col-spacing);
+        }
+    }
+    
+    .block {
+        
+        float: left;
+        padding: 0 $col-spacing;
+        width: (100% / $nb-col);
+        border-radius: 5px;
+        
+        &, a {
+            color: $color-8;
+        }
+        
+        > .inner {
+            background: lighten($bg, 4%);
+            padding: 1em 0 0;
+        }
+        
+        .icon {
+            text-align: center;
+            font-size: 6rem;
+        }
+        
+        .title {
+            text-align: center;
+            padding-bottom: .6em;
+        }
+        
+        .description {
+            background: darken($bg, 1%);
+            padding: .4em .7em;
+            font-size: .8em;
+        }
+        
+    } //BLOCK
+    
+    & .block-1 {
+        .icon {
+            color: $color-2;
+        }
+    }
+        
+    & .block-2 {
+        .icon {
+            color: $color-5;
+        }
+    }
+        
+    & .block-3 {
+        .icon {
+            color: $color-6;
+        }
+    }
+    
+    
+    
+} // ARGUMENTS
+
+//----------
+// VALUES
+//----------
+
+.block-values {
+    $col-spacing: 1.5em;
+    border-bottom: 3px solid $color-4;
+    background-size: cover;
+    padding: 1.3em;
+    position:relative;
+    
+    &:after {
+        content: '';
+        background: url(#{$img-path}photo-1.jpg) no-repeat center;
+        background-size: cover;
+        opacity: .6;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+    }
+    
+    .wrapper {
+        @extend .group;
+    }
+    
+    
+    .block-1 {
+        
+        
+        p {
+            padding: 1.5em ;
+            background: rgba(255, 255, 255, 0.65);
+            text-align: justify;
+            font-family: $font-special-2;
+            
+            &:last-child {
+            padding-top: 0;
+            }
+        }
+        
+        
+        
+    }
+    
+    @media (min-width: $screen-sm) {
+        
+        .wrapper {
+            margin: 1em (-$col-spacing);
+                }
+            .block {
+                float: left;
+                padding: 0 $col-spacing;
+            
+                }
+             & .block-1 {
+                width: 70%;
+            }
+            
+            & .block-2 {
+                width: 30%;
+            }
+    }
+    
+    .title {
+        font-family: $font-special-1;
+        font-size: 3.5rem;
+        color: $color-4;
+        text-shadow: 2px 2px 0 $color-3;
+        text-transform: uppercase;
+    }
+    
+    .list {
+        
+        background: rgba(255, 255, 255, 0.9);
+        padding: 1em;
+        
+        li {
+            display: block;
+            
+            padding: .3em ;
+            
+            a {
+                color: $color-1;
+                font-size: 1.2rem;
+                font-family: $font-special-1;
+                font-weight: bold;
+            }
+            
+            @for $i from 1 through $nb-color {
+                &:nth-child(#{$i}){
+                    a {
+                        @extend %color-#{$i};
+                    }
+                }
+            }
+        }
+    }
+    
+}
